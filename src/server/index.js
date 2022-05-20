@@ -1,5 +1,5 @@
 require("dotenv").config();
-const debug = require("debug")("kinds:server");
+const debug = require("debug")("social:server");
 const chalk = require("chalk");
 const express = require("express");
 const helmet = require("helmet");
