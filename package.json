@@ -6,8 +6,8 @@
   "scripts": {
     "start": "node src",
     "start-dev": "nodemon src -q",
-    "test": "jest --watchAll=false false",
-    "test-coverage": "jest --watchAll=false --coverage",
+    "test": "jest --watchAll false",
+    "test-coverage": "jest --watchAll --coverage --watchAll=false",
     "prepare": "husky install"
   },
   "keywords": [],
@@ -29,8 +29,10 @@
     "express": "^4.17.3",
     "helmet": "^5.0.2",
     "jest": "^27.5.1",
+    "mongodb-memory-server": "^8.5.2",
     "mongoose": "^6.3.4",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "supertest": "^6.2.3"
   },
   "jest": {
     "collectCoverageFrom": [

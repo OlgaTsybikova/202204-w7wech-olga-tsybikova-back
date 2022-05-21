@@ -2,10 +2,10 @@ require("dotenv").config();
 const debug = require("debug")("social:server:controllers");
 const User = require("../../database/models/User");
 
-const getUsers = async (req, res, next) => {
+const loadUsers = async (req, res, next) => {
   try {
     const users = await User.find();
-    res.status(200).json(users);
+    res.status(200).json({ users });
     debug("Users request received");
   } catch (error) {
     error.StatusCode = 404;
@@ -14,4 +14,4 @@ const getUsers = async (req, res, next) => {
   }
 };
 
-module.exports = { getUsers };
+module.exports = { loadUsers };
