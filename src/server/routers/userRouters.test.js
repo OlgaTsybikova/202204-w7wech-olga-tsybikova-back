@@ -41,6 +41,7 @@ afterAll(async () => {
 
 beforeEach(async () => {
   await User.create(users[0]);
+  await User.create(users[1]);
 });
 afterEach(async () => {
   await User.deleteMany({});
@@ -48,11 +49,27 @@ afterEach(async () => {
 
 describe("Given a GET/user/load endpoint", () => {
   describe("When it receives a request", () => {
-    test("Then it should responde with a status code 200 and a list of users", async () => {
+    test("Then it should responde with a status code 200 and a length 2", async () => {
       const expectedLength = 2;
       await request(app).get("/user/load").expect(200);
 
       expect(users).toHaveLength(expectedLength);
+    });
+  });
+});
+
+describe("Given a POST/user/login endpoint", () => {
+  describe("When it receives a request", () => {
+    test("Then it should respond with json", async () => {
+      const loggingUser = {
+        username: "lorenzo1",
+        password: "lorenzo1",
+      };
+
+      await request(app)
+        .post("/user/login")
+        .send(loggingUser)
+        .expect("Content-Type", /json/);
     });
   });
 });
