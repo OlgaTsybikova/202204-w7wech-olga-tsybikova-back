@@ -4,6 +4,7 @@ const chalk = require("chalk");
 const express = require("express");
 const helmet = require("helmet");
 const morgan = require("morgan");
+const cors = require("cors");
 const { notFoundError, generalError } = require("./middlewares/errors");
 const userRouter = require("./routers/userRouters");
 
@@ -20,7 +21,7 @@ const startServer = (port) =>
       reject(error);
     });
   });
-
+app.use(cors());
 app.use(morgan("dev"));
 app.use(helmet());
 app.use(express.json());
